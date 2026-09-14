@@ -6,10 +6,11 @@
 
 - 数据集：由 1526 份材料资料生成的 9444 条 Alpaca 格式 QA。
 - 数据注册：`test/wpFuh_5cOk4Y/dataset_info.json`。
-- 训练配置：`examples/train_lora/qwen3_8b_material_qa_autodl.yaml`。
-- 上下文长度：默认 2048 token，优先保证 24 GB GPU 可运行。
+- 冒烟测试配置：`examples/train_lora/qwen3_8b_material_qa_smoke_autodl.yaml`，只取 64 条数据跑 5 步，用于快速验证环境和数据链路。
+- 正式训练配置：`examples/train_lora/qwen3_8b_material_qa_autodl.yaml`，使用全部材料数据训练 1 个 epoch。
+- 正式训练上下文长度：默认 1536 token，在速度、材料信息保留和 24 GB GPU 显存之间折中。
 - 输出目录：`saves/qwen3-8b/lora/material-qa`。
-- 监督格式：`template: qwen3` 与 `enable_thinking: false`，因为当前 QA 没有显式思维链。
+- 监督格式：`template: qwen3_nothink`，因为当前 QA 没有显式思维链。
 
 ## AutoDL 环境
 
@@ -27,12 +28,27 @@ ModelScope 与 Hugging Face 上的模型 ID 均为 `Qwen/Qwen3-8B`。国内网�
 export USE_MODELSCOPE_HUB=1
 ```
 
-## 启动训练
+## 先做 5 步冒烟测试
+
+模型已下载到 `/root/autodl-tmp/models/Qwen3-8B` 后，先运行：
 
 ```bash
 cd /root/Fine-Tuning4Material
 export PYTHONPATH=/root/Fine-Tuning4Material/src
-export USE_MODELSCOPE_HUB=1
+unset USE_MODELSCOPE_HUB
+
+CUDA_VISIBLE_DEVICES=0 python -m llamafactory.cli train \
+  examples/train_lora/qwen3_8b_material_qa_smoke_autodl.yaml
+```
+
+该测试用于确认模型、数据、LoRA 和 CUDA 全链路正常，不用于产出正式模型。
+
+## 启动正式训练
+
+```bash
+cd /root/Fine-Tuning4Material
+export PYTHONPATH=/root/Fine-Tuning4Material/src
+unset USE_MODELSCOPE_HUB
 
 CUDA_VISIBLE_DEVICES=0 python -m llamafactory.cli train \
   examples/train_lora/qwen3_8b_material_qa_autodl.yaml
@@ -46,9 +62,15 @@ watch -n 1 nvidia-smi
 
 训练中断后，把 YAML 中的 `resume_from_checkpoint` 改成最近的 `checkpoint-*` 目录再重新运行。
 
+## 为什么原配置会显示 80 多小时
+
+原配置有 8971 条训练样本、3 个 epoch，并设置 `gradient_accumulation_steps: 8`。进度条中的一个 step 实际包含 8 次前向与反向传播；首个 step 又常包含 CUDA 内核初始化开销，因此仅凭第一步推算的 ETA 偏大。
+
+正式快速版把 9444 条 QA 全部用于训练，但把 3 个 epoch 改为 1 个、`cutoff_len` 从 2048 降到 1536，关闭本轮验证，并只在 epoch 结束保存一次。不要仅为了让进度条变快而降低梯度累积：那会增加优化 step 数，总微批次数基本不变。
+
 ## GPU 与上下文调整
 
-- RTX 3090/4090 24 GB：保持 `cutoff_len: 2048`；若仍然显存不足，再降到 1024。
+- RTX 3090/4090 24 GB：先使用 `cutoff_len: 1536`；如显存充足且更重视回答完整性，可恢复到 2048。
 - A100/A6000 40--48 GB：可将 `cutoff_len` 提升到 4096。
 - A100/H100 80 GB：可测试 4096--8192，并按数据长度评估收益。
 - V100 或其他不支持 BF16 的 GPU：设置 `bf16: false`、`fp16: true`。
