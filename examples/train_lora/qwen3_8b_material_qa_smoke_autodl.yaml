@@ -14,7 +14,8 @@ lora_target: all
 ### dataset
 dataset: "[Easy Dataset] [wpFuh_5cOk4Y] Alpaca"
 dataset_dir: test/wpFuh_5cOk4Y
-template: qwen3_nothink
+template: qwen3
+enable_thinking: false
 cutoff_len: 512
 max_samples: 64
 val_size: 0.0
@@ -27,6 +28,7 @@ output_dir: saves/qwen3-8b/lora/material-qa-smoke
 logging_steps: 1
 eval_strategy: "no"
 save_strategy: "no"
+save_total_limit: 1
 plot_loss: true
 overwrite_output_dir: true
 load_best_model_at_end: false
@@ -34,6 +36,7 @@ report_to: none
 
 ### train
 per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
 gradient_accumulation_steps: 1
 gradient_checkpointing: true
 learning_rate: 1.0e-5
@@ -46,3 +49,4 @@ bf16: true
 fp16: false
 seed: 42
 ddp_timeout: 180000000
+resume_from_checkpoint: null

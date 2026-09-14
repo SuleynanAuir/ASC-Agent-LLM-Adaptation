@@ -10,7 +10,7 @@
 - 正式训练配置：`examples/train_lora/qwen3_8b_material_qa_autodl.yaml`，使用全部材料数据训练 1 个 epoch。
 - 正式训练上下文长度：默认 1536 token，在速度、材料信息保留和 24 GB GPU 显存之间折中。
 - 输出目录：`saves/qwen3-8b/lora/material-qa`。
-- 监督格式：`template: qwen3_nothink`，因为当前 QA 没有显式思维链。
+- 监督格式：`template: qwen3` 与 `enable_thinking: false`，因为当前 QA 没有显式思维链。
 
 ## AutoDL 环境
 
@@ -52,6 +52,23 @@ unset USE_MODELSCOPE_HUB
 
 CUDA_VISIBLE_DEVICES=0 python -m llamafactory.cli train \
   examples/train_lora/qwen3_8b_material_qa_autodl.yaml
+```
+
+## Weights & Biases 监控
+
+正式配置使用 `report_to: wandb`，并将 `logging_steps` 设为 1，以记录每个优化 step 的训练损失、梯度范数和学习率。首次训练前安装并登录：
+
+```bash
+python -m pip install -U wandb
+wandb login
+```
+
+启动时设置项目名，同时关闭模型文件和参数直方图上传，减少网络与训练开销：
+
+```bash
+export WANDB_PROJECT=Fine-Tuning4Material
+export WANDB_LOG_MODEL=false
+export WANDB_WATCH=false
 ```
 
 实时查看显存：

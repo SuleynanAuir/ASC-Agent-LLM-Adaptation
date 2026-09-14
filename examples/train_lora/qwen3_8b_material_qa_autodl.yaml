@@ -14,7 +14,8 @@ lora_target: all
 ### dataset
 dataset: "[Easy Dataset] [wpFuh_5cOk4Y] Alpaca"
 dataset_dir: test/wpFuh_5cOk4Y
-template: qwen3_nothink
+template: qwen3
+enable_thinking: false
 cutoff_len: 1536
 val_size: 0.0
 overwrite_cache: true
@@ -23,14 +24,15 @@ dataloader_num_workers: 2
 
 ### output
 output_dir: saves/qwen3-8b/lora/material-qa
-logging_steps: 10
+logging_steps: 1
 eval_strategy: "no"
 save_strategy: epoch
 save_total_limit: 1
 plot_loss: true
 overwrite_output_dir: true
 load_best_model_at_end: false
-report_to: none
+report_to: wandb
+run_name: qwen3-8b-material-qa-lora-1epoch
 
 ### train
 per_device_train_batch_size: 1
