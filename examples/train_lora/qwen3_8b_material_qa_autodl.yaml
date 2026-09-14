@@ -1,14 +1,11 @@
 ### model
-model_name_or_path: internlm/Intern-S1-mini
+model_name_or_path: Qwen/Qwen3-8B
 trust_remote_code: true
 
 ### method
 stage: sft
 do_train: true
 finetuning_type: lora
-freeze_vision_tower: true
-freeze_multi_modal_projector: true
-freeze_language_model: false
 lora_rank: 8
 lora_alpha: 16
 lora_dropout: 0.05
@@ -17,15 +14,16 @@ lora_target: all
 ### dataset
 dataset: "[Easy Dataset] [wpFuh_5cOk4Y] Alpaca"
 dataset_dir: test/wpFuh_5cOk4Y
-template: intern_s1
-cutoff_len: 4096
+template: qwen3
+enable_thinking: false
+cutoff_len: 2048
 val_size: 0.05
 overwrite_cache: true
 preprocessing_num_workers: 8
 dataloader_num_workers: 2
 
 ### output
-output_dir: saves/intern-s1-mini/lora/asc-qa
+output_dir: saves/qwen3-8b/lora/material-qa
 logging_steps: 10
 save_steps: 250
 eval_steps: 250

@@ -1,43 +1,41 @@
-# AutoDL 上进行 ASC QA 数据 LoRA 微调
+# AutoDL 上进行材料 QA LoRA 微调
 
-本配置采用科学垂类基模 `internlm/Intern-S1-mini`，在 AutoDL 上用 LoRA 训练 `test/wpFuh_5cOk4Y/alpaca.json`。建议使用单张 A100 40 GB 或更高规格 GPU。
-
-Intern-S1-mini 由约 8B 的 Qwen3 语言骨干和 0.3B 视觉编码器组成，继续预训练数据中包含超过 2.5T 科学领域 token。模型支持科学推理、图文输入、思考模式切换和工具调用，适合作为本项目的材料领域本地模型。
+本配置采用 `Qwen/Qwen3-8B`，在 AutoDL 上用 LoRA 训练 `test/wpFuh_5cOk4Y/alpaca.json`。Qwen3-8B 是 8.2B 参数文本模型，支持思考/非思考切换、工具调用和多语言指令跟随；材料领域知识由本项目 QA 数据注入。
 
 ## 数据与配置
 
-- 数据集：9444 条 Alpaca 格式 QA 数据。
+- 数据集：由 1526 份材料资料生成的 9444 条 Alpaca 格式 QA。
 - 数据注册：`test/wpFuh_5cOk4Y/dataset_info.json`。
-- 训练配置：`examples/train_lora/intern_s1_mini_qa_autodl.yaml`。
-- 上下文长度：4096 token，可完整覆盖约 99.9% 的样本；超长样本由 LLaMA Factory 截断。
-- 输出目录：`saves/intern-s1-mini/lora/asc-qa`。
+- 训练配置：`examples/train_lora/qwen3_8b_material_qa_autodl.yaml`。
+- 上下文长度：默认 2048 token，优先保证 24 GB GPU 可运行。
+- 输出目录：`saves/qwen3-8b/lora/material-qa`。
+- 监督格式：`template: qwen3` 与 `enable_thinking: false`，因为当前 QA 没有显式思维链。
 
 ## AutoDL 环境
 
-建议选择 Python 3.11、PyTorch 2.4 或更高版本、CUDA 12.1 或更高版本的镜像。模型要求 `transformers>=4.55.2`；本项目的依赖范围已覆盖该版本。
+建议使用 Python 3.11、PyTorch 2.4.1、CUDA 12.1、Transformers 4.56.2。安装当前仓库并验证 GPU：
 
 ```bash
-cd /root/autodl-tmp/Fine-Tuning4Material
-
-python -m pip install --upgrade pip
-pip install -e .
-
+cd /root/Fine-Tuning4Material
+python -m pip install -e .
 python -c "import torch; print(torch.__version__, torch.version.cuda, torch.cuda.get_device_name(0))"
 ```
 
-国内网络可让 LLaMA Factory 通过 ModelScope 下载模型：
+ModelScope 与 Hugging Face 上的模型 ID 均为 `Qwen/Qwen3-8B`。国内网络启用 ModelScope：
 
 ```bash
 export USE_MODELSCOPE_HUB=1
 ```
 
-如果已经手动下载模型，请把 YAML 中的 `model_name_or_path` 改为模型的绝对路径。
-
 ## 启动训练
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli train \
-  examples/train_lora/intern_s1_mini_qa_autodl.yaml
+cd /root/Fine-Tuning4Material
+export PYTHONPATH=/root/Fine-Tuning4Material/src
+export USE_MODELSCOPE_HUB=1
+
+CUDA_VISIBLE_DEVICES=0 python -m llamafactory.cli train \
+  examples/train_lora/qwen3_8b_material_qa_autodl.yaml
 ```
 
 实时查看显存：
@@ -48,30 +46,22 @@ watch -n 1 nvidia-smi
 
 训练中断后，把 YAML 中的 `resume_from_checkpoint` 改成最近的 `checkpoint-*` 目录再重新运行。
 
-## GPU 与显存调整
+## GPU 与上下文调整
 
-- A100 40 GB、A6000 48 GB、A100/H100 80 GB：保持当前 `cutoff_len: 4096`。
-- RTX 3090/4090 24 GB：先把 `cutoff_len` 降为 2048；Intern-S1 官方 LoRA 示例给出的单卡最低显存约为 22 GB。
+- RTX 3090/4090 24 GB：保持 `cutoff_len: 2048`；若仍然显存不足，再降到 1024。
+- A100/A6000 40--48 GB：可将 `cutoff_len` 提升到 4096。
+- A100/H100 80 GB：可测试 4096--8192，并按数据长度评估收益。
 - V100 或其他不支持 BF16 的 GPU：设置 `bf16: false`、`fp16: true`。
-- 显存仍不足时不要开启视觉模块训练；当前配置已经冻结视觉塔和多模态投影器。
 
 ## 垂类基模与通用 API 双路线
 
-本地垂类模型负责：
+本地 Qwen3-8B 材料模型负责私有材料问答、机理分析、实验方案草拟、专业信息抽取和受控工具调用。通用 API 模型负责复杂任务规划、跨领域推理、Agent 编排和最终质量复核。
 
-- 私有材料数据问答、ASC 机理分析、实验方案草拟和专业信息抽取。
-- 调用材料数据库、文献检索、计算和知识图谱等受控工具。
-- 处理不适合发送到外部 API 的内部数据。
+推荐调用链：`用户请求 -> 路由器 -> 本地材料模型/工具 -> 通用 API 复核或补强 -> 最终答案`。普通材料问答优先走本地模型；复杂规划、工具链失败、高风险结论或低置信度回答再升级到通用 API。发送到通用 API 的内容应先脱敏并结构化。
 
-通用 API 模型负责：
-
-- 多步骤任务规划、复杂 Agent 编排、跨领域问题和最终质量复核。
-- 在本地模型低置信度、证据冲突或需要更强通用推理时接管。
-- 接收本地模型整理后的脱敏事实与结构化结果，不直接接收敏感原始材料。
-
-推荐调用链：`用户请求 -> 路由器 -> 本地材料模型/工具 -> 通用 API 复核或补强 -> 最终答案`。普通材料问答优先走本地模型；复杂规划、工具链失败和高风险结论再升级到通用 API。
+当前 9444 条 QA 不包含标准函数调用轨迹，因此本轮只做材料知识 SFT，不额外伪造 Agent 数据。Qwen3 原有工具调用能力由低学习率 LoRA 尽量保留；后续若有真实的 `工具定义 -> 调用 -> 观察 -> 回答` 轨迹，再进行第二阶段 Agent SFT。
 
 ## 参考
 
-- [Intern-S1-mini 官方模型卡](https://huggingface.co/internlm/Intern-S1-mini)
-- [Intern-S1 官方 LLaMA Factory 微调说明](https://github.com/InternLM/Intern-S1/blob/main/docs/sft.md)
+- [Qwen3-8B 官方模型卡](https://huggingface.co/Qwen/Qwen3-8B)
+- [Qwen-Agent 配置文档](https://qwenlm.github.io/Qwen-Agent/en/guide/get_started/configuration/)
