@@ -1,0 +1,14 @@
+# Generated caches and training outputs
+.DS_Store
+__pycache__/
+*.py[cod]
+llamaboard_cache/
+saves/
+outputs/
+
+# Easy Dataset exports and source material. Keep only the files used by training.
+test/*
+!test/wpFuh_5cOk4Y/
+test/wpFuh_5cOk4Y/*
+!test/wpFuh_5cOk4Y/alpaca.json
+!test/wpFuh_5cOk4Y/dataset_info.json

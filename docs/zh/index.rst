@@ -19,6 +19,7 @@ LlamaFactory 文档
    :maxdepth: 1
    :caption: Training
 
+   autodl-qa-finetuning
    training/sft
    training/dpo
 
