@@ -1,0 +1,103 @@
+top.lang: zh
+top.model_name: Qwen3-8B-Thinking
+top.model_path: /root/autodl-tmp/models/Qwen3-8B
+top.hub_name: huggingface
+top.finetuning_type: lora
+top.checkpoint_path: []
+top.quantization_bit: none
+top.quantization_method: bnb
+top.template: qwen3
+top.rope_scaling: none
+top.booster: auto
+
+train.training_stage: Supervised Fine-Tuning
+train.dataset_dir: test/wpFuh_5cOk4Y
+train.dataset:
+  - "[Easy Dataset] [wpFuh_5cOk4Y] Alpaca"
+train.learning_rate: "1e-5"
+train.num_train_epochs: "1.0"
+train.max_grad_norm: "1.0"
+train.max_samples: "9444"
+train.compute_type: fp16
+train.cutoff_len: 1536
+train.batch_size: 1
+train.gradient_accumulation_steps: 8
+train.val_size: 0.0
+train.lr_scheduler_type: cosine
+
+train.logging_steps: 5
+train.save_steps: 100
+train.warmup_steps: 0
+train.neftune_alpha: 0
+train.extra_args: '{"optim":"adamw_torch","overwrite_cache":true,"preprocessing_num_workers":8,"dataloader_num_workers":2,"save_strategy":"steps","save_total_limit":2,"overwrite_output_dir":false,"load_best_model_at_end":false,"eval_strategy":"no","run_name":"qwen3-8b-material-qa-lora-1epoch","weight_decay":0.01,"gradient_checkpointing":true,"warmup_ratio":0.05,"per_device_eval_batch_size":1,"seed":42,"resume_from_checkpoint":null}'
+train.packing: false
+train.neat_packing: false
+train.train_on_prompt: false
+train.mask_history: false
+train.resize_vocab: false
+train.use_llama_pro: false
+train.enable_thinking: false
+train.report_to: wandb
+train.project: Fine-Tuning4Material
+train.trackio_space_id: trackio
+train.hub_private_repo: false
+
+train.freeze_trainable_layers: 2
+train.freeze_trainable_modules: all
+train.freeze_extra_modules: ""
+
+train.lora_rank: 8
+train.lora_alpha: 16
+train.lora_dropout: 0.05
+train.loraplus_lr_ratio: 0
+train.create_new_adapter: false
+train.use_rslora: false
+train.use_dora: false
+train.use_pissa: false
+train.lora_target: all
+train.additional_target: ""
+
+train.pref_beta: 0.1
+train.pref_ftx: 0
+train.pref_loss: sigmoid
+train.reward_model: []
+train.ppo_score_norm: false
+train.ppo_whiten_rewards: false
+
+train.freeze_vision_tower: true
+train.freeze_multi_modal_projector: true
+train.freeze_language_model: false
+train.image_max_pixels: 768*768
+train.image_min_pixels: 32*32
+train.video_max_pixels: 256*256
+train.video_min_pixels: 16*16
+
+train.use_galore: false
+train.galore_rank: 16
+train.galore_update_interval: 200
+train.galore_scale: 2.0
+train.galore_target: all
+
+train.use_apollo: false
+train.apollo_rank: 16
+train.apollo_update_interval: 200
+train.apollo_scale: 32.0
+train.apollo_target: all
+
+train.use_badam: false
+train.badam_mode: layer
+train.badam_switch_mode: ascending
+train.badam_switch_interval: 50
+train.badam_update_ratio: 0.05
+
+train.use_swanlab: false
+train.swanlab_project: llamafactory
+train.swanlab_run_name: ""
+train.swanlab_workspace: ""
+train.swanlab_api_key: ""
+train.swanlab_mode: cloud
+
+train.output_dir: /root/autodl-tmp/saves/qwen3-8b/lora/material-qa
+train.config_path: qwen3_8b_material_qa.yaml
+train.ds_stage: none
+train.ds_offload: false

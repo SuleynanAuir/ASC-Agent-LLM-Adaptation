@@ -23,13 +23,14 @@ preprocessing_num_workers: 8
 dataloader_num_workers: 2
 
 ### output
-output_dir: saves/qwen3-8b/lora/material-qa
-logging_steps: 1
+output_dir: /root/autodl-tmp/saves/qwen3-8b/lora/material-qa
+logging_steps: 5
 eval_strategy: "no"
-save_strategy: epoch
-save_total_limit: 1
+save_strategy: steps
+save_steps: 100
+save_total_limit: 2
 plot_loss: true
-overwrite_output_dir: true
+overwrite_output_dir: false
 load_best_model_at_end: false
 report_to: wandb
 run_name: qwen3-8b-material-qa-lora-1epoch
@@ -45,8 +46,8 @@ lr_scheduler_type: cosine
 warmup_ratio: 0.05
 weight_decay: 0.01
 max_grad_norm: 1.0
-bf16: true
-fp16: false
+bf16: false
+fp16: true
 seed: 42
 ddp_timeout: 180000000
 resume_from_checkpoint: null

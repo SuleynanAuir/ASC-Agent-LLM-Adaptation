@@ -1,0 +1,6 @@
+lang: zh
+hub_name: huggingface
+last_model: Qwen3-8B-Thinking
+path_dict:
+  Qwen3-8B-Thinking: /root/autodl-tmp/models/Qwen3-8B
+cache_dir: null

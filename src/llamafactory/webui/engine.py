@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 from typing import TYPE_CHECKING, Any
 
 from .chatter import WebChatModel
-from .common import create_ds_config, get_time, load_config
+from .common import create_ds_config, get_time, load_args, load_config
 from .locales import LOCALES
 from .manager import Manager
 from .runner import Runner
@@ -66,6 +67,23 @@ class Engine:
                 init_dict["top.model_name"] = {"value": user_config["last_model"]}
 
         yield self._update_component(init_dict)
+
+        preset_path = os.getenv("LLAMABOARD_PRESET")
+        if preset_path and not self.demo_mode and not self.pure_chat:
+            preset_config = load_args(preset_path)
+            if preset_config:
+                preset_updates = {}
+                for elem_id, value in preset_config.items():
+                    try:
+                        elem = self.manager.get_elem_by_id(elem_id)
+                    except KeyError:
+                        continue
+
+                    preset_updates[elem] = elem.__class__(value=value)
+
+                if preset_updates:
+                    print(f"Loaded LlamaBoard preset from {preset_path} ({len(preset_updates)} fields).")
+                    yield preset_updates
 
         if self.runner.running and not self.demo_mode and not self.pure_chat:
             yield {elem: elem.__class__(value=value) for elem, value in self.runner.running_data.items()}

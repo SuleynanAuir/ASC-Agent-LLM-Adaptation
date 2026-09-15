@@ -9,7 +9,7 @@
 - 冒烟测试配置：`examples/train_lora/qwen3_8b_material_qa_smoke_autodl.yaml`，只取 64 条数据跑 5 步，用于快速验证环境和数据链路。
 - 正式训练配置：`examples/train_lora/qwen3_8b_material_qa_autodl.yaml`，使用全部材料数据训练 1 个 epoch。
 - 正式训练上下文长度：默认 1536 token，在速度、材料信息保留和 24 GB GPU 显存之间折中。
-- 输出目录：`saves/qwen3-8b/lora/material-qa`。
+- 输出目录：`/root/autodl-tmp/saves/qwen3-8b/lora/material-qa`，放在 AutoDL 数据盘以降低实例释放或系统盘空间不足带来的风险。
 - 监督格式：`template: qwen3` 与 `enable_thinking: false`，因为当前 QA 没有显式思维链。
 
 ## AutoDL 环境
@@ -56,7 +56,7 @@ CUDA_VISIBLE_DEVICES=0 python -m llamafactory.cli train \
 
 ## Weights & Biases 监控
 
-正式配置使用 `report_to: wandb`，并将 `logging_steps` 设为 1，以记录每个优化 step 的训练损失、梯度范数和学习率。首次训练前安装并登录：
+正式配置使用 `report_to: wandb`，并将 `logging_steps` 设为 5，以记录训练损失、梯度范数和学习率，同时减少网络上报开销。首次训练前安装并登录：
 
 ```bash
 python -m pip install -U wandb
@@ -71,6 +71,10 @@ export WANDB_LOG_MODEL=false
 export WANDB_WATCH=false
 ```
 
+## LlamaBoard 一键预设
+
+先把 `llamaboard_config/qwen3_8b_material_qa_user_config.yaml` 复制为 `llamaboard_cache/user_config.yaml`，再设置 `LLAMABOARD_PRESET=llamaboard_config/qwen3_8b_material_qa.yaml` 启动 WebUI。页面会自动选择已注册的 `Qwen3-8B-Thinking`，但模型路径映射到本地 `/root/autodl-tmp/models/Qwen3-8B`，不会重新下载；其余 UI 参数也会自动载入。W&B API Key 不写入预设，仍通过 `wandb login` 提供。
+
 实时查看显存：
 
 ```bash
@@ -83,14 +87,14 @@ watch -n 1 nvidia-smi
 
 原配置有 8971 条训练样本、3 个 epoch，并设置 `gradient_accumulation_steps: 8`。进度条中的一个 step 实际包含 8 次前向与反向传播；首个 step 又常包含 CUDA 内核初始化开销，因此仅凭第一步推算的 ETA 偏大。
 
-正式快速版把 9444 条 QA 全部用于训练，但把 3 个 epoch 改为 1 个、`cutoff_len` 从 2048 降到 1536，关闭本轮验证，并只在 epoch 结束保存一次。不要仅为了让进度条变快而降低梯度累积：那会增加优化 step 数，总微批次数基本不变。
+正式快速版把 9444 条 QA 全部用于训练，但把 3 个 epoch 改为 1 个、`cutoff_len` 从 2048 降到 1536，并关闭本轮验证。每 100 个优化 step 保存一次断点并保留最近 2 个，以兼顾恢复能力和保存开销。不要仅为了让进度条变快而降低梯度累积：那会增加优化 step 数，总微批次数基本不变。
 
 ## GPU 与上下文调整
 
 - RTX 3090/4090 24 GB：先使用 `cutoff_len: 1536`；如显存充足且更重视回答完整性，可恢复到 2048。
 - A100/A6000 40--48 GB：可将 `cutoff_len` 提升到 4096。
 - A100/H100 80 GB：可测试 4096--8192，并按数据长度评估收益。
-- V100 或其他不支持 BF16 的 GPU：设置 `bf16: false`、`fp16: true`。
+- Tesla V100/V100S（Volta）：使用 `bf16: false`、`fp16: true`，以利用其原生 FP16 Tensor Core；不要依据 PyTorch 的 BF16 软件可用性检测结果启用 BF16。
 
 ## 垂类基模与通用 API 双路线
 
