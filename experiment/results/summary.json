@@ -1,0 +1,295 @@
+{
+  "training": {
+    "steps": 800,
+    "runtime_seconds": 11850.0854,
+    "nonfinite_gradient_steps": [
+      17
+    ],
+    "finite_loss_count": 800,
+    "gradient_median": 0.3406237065792084,
+    "gradient_p95": 0.4158880233764646,
+    "first50_mean_loss": 1.5162179999999998,
+    "last50_mean_loss": 1.165862,
+    "best_step": 600,
+    "eval_history": [
+      {
+        "step": 0,
+        "wall_seconds": 66.08999562263489,
+        "eval_loss": 1.7049535512924194,
+        "eval_runtime": 49.1721,
+        "eval_samples_per_second": 1.952,
+        "eval_steps_per_second": 1.952,
+        "epoch": 0,
+        "num_input_tokens_seen": 0
+      },
+      {
+        "step": 200,
+        "wall_seconds": 2792.63768863678,
+        "eval_loss": 1.2406312227249146,
+        "eval_runtime": 49.4516,
+        "eval_samples_per_second": 1.941,
+        "eval_steps_per_second": 1.941,
+        "epoch": 0.17115960633290545,
+        "num_input_tokens_seen": 2375576
+      },
+      {
+        "step": 400,
+        "wall_seconds": 5741.800264120102,
+        "eval_loss": 1.1936230659484863,
+        "eval_runtime": 49.4452,
+        "eval_samples_per_second": 1.942,
+        "eval_steps_per_second": 1.942,
+        "epoch": 0.3423192126658109,
+        "num_input_tokens_seen": 4762240
+      },
+      {
+        "step": 600,
+        "wall_seconds": 8698.73089146614,
+        "eval_loss": 1.1850557327270508,
+        "eval_runtime": 49.4695,
+        "eval_samples_per_second": 1.941,
+        "eval_steps_per_second": 1.941,
+        "epoch": 0.5134788189987163,
+        "num_input_tokens_seen": 7152424
+      },
+      {
+        "step": 800,
+        "wall_seconds": 11641.145834445953,
+        "eval_loss": 1.185499668121338,
+        "eval_runtime": 49.471,
+        "eval_samples_per_second": 1.941,
+        "eval_steps_per_second": 1.941,
+        "epoch": 0.6846384253316218,
+        "num_input_tokens_seen": 9537936
+      }
+    ]
+  },
+  "nll": {
+    "n": 96,
+    "base_mean": 1.705531890814503,
+    "tuned_mean": 1.1850647839407127,
+    "relative_reduction_pct": 30.516410140254436,
+    "mean_paired_reduction": 0.5204671068737904,
+    "paired_reduction_ci95": [
+      0.3673620553687215,
+      0.8039776712035139
+    ],
+    "improved_count": 96,
+    "base_token_weighted_ppl": 4.516758014445938,
+    "tuned_token_weighted_ppl": 3.1333754417187367
+  },
+  "nll_valid_reference": {
+    "n": 95,
+    "base_mean": 1.5169000280530829,
+    "tuned_mean": 1.1290299327749955,
+    "relative_reduction_pct": 25.569918129404513,
+    "mean_paired_reduction": 0.3878700952780874,
+    "paired_reduction_ci95": [
+      0.3628388153408703,
+      0.4204510284254426
+    ],
+    "improved_count": 95,
+    "base_token_weighted_ppl": 4.514782196499979,
+    "tuned_token_weighted_ppl": 3.132969403516992
+  },
+  "topics": [
+    {
+      "group": "工艺与施工",
+      "n": 29,
+      "base": 1.5230497491770778,
+      "tuned": 1.1174743442699826,
+      "delta": 0.40557540490709504,
+      "delta_ci95": [
+        0.3426451271977918,
+        0.5037184990171728
+      ]
+    },
+    {
+      "group": "氧化与侵蚀",
+      "n": 29,
+      "base": 1.5027772434826554,
+      "tuned": 1.1348928233672833,
+      "delta": 0.36788442011537226,
+      "delta_ci95": [
+        0.3428518019359687,
+        0.3976346741976409
+      ]
+    },
+    {
+      "group": "热震与力学",
+      "n": 22,
+      "base": 1.5019094320860775,
+      "tuned": 1.1131181147965519,
+      "delta": 0.3887913172895258,
+      "delta_ci95": [
+        0.3537966376001184,
+        0.42874832112680783
+      ]
+    },
+    {
+      "group": "结构与表征/其他",
+      "n": 15,
+      "base": 1.5543008248011272,
+      "tuned": 1.1633731484413148,
+      "delta": 0.3909276763598124,
+      "delta_ci95": [
+        0.35423440804084144,
+        0.4333033286531766
+      ]
+    }
+  ],
+  "qa": {
+    "base": {
+      "n": 24,
+      "lexical_n": 23,
+      "char_rouge_l_f1": 0.19923014098853437,
+      "char_bigram_f1": 0.23582050748124161,
+      "new_tokens": 512.0,
+      "hit_token_limit": 1.0
+    },
+    "tuned": {
+      "n": 24,
+      "lexical_n": 23,
+      "char_rouge_l_f1": 0.22426516726286277,
+      "char_bigram_f1": 0.2649464149064028,
+      "new_tokens": 482.4166666666667,
+      "hit_token_limit": 0.7916666666666666
+    }
+  },
+  "qa_paired_rouge_delta_ci95": [
+    0.015498847785459713,
+    0.0328488611210242
+  ],
+  "probes": {
+    "base": {
+      "n": 16,
+      "valid_json": 16,
+      "exact_pass": 13,
+      "groups": {
+        "提取": {
+          "n": 4,
+          "pass": 4
+        },
+        "计算": {
+          "n": 4,
+          "pass": 3
+        },
+        "工具路由": {
+          "n": 4,
+          "pass": 2
+        },
+        "证据边界": {
+          "n": 4,
+          "pass": 4
+        }
+      }
+    },
+    "tuned": {
+      "n": 16,
+      "valid_json": 15,
+      "exact_pass": 13,
+      "groups": {
+        "提取": {
+          "n": 4,
+          "pass": 4
+        },
+        "计算": {
+          "n": 4,
+          "pass": 3
+        },
+        "工具路由": {
+          "n": 4,
+          "pass": 2
+        },
+        "证据边界": {
+          "n": 4,
+          "pass": 4
+        }
+      }
+    }
+  },
+  "qa_timing": {
+    "base": {
+      "batches": 6,
+      "median_batch_seconds": 25.64850127324462,
+      "total_seconds": 154.07774924486876,
+      "aggregate_tokens_per_second": 79.75194380903916
+    },
+    "tuned": {
+      "batches": 6,
+      "median_batch_seconds": 42.90482100099325,
+      "total_seconds": 258.7515329942107,
+      "aggregate_tokens_per_second": 44.74562861917052
+    }
+  },
+  "data_audit": {
+    "validation_n": 96,
+    "empty_reference_ids": [
+      "qa-04126"
+    ],
+    "invalid_reference_exclusion": "Post-hoc exclusion by empty-reference rule only. Original data, selected checkpoint and raw 96-case metrics retained; no retraining.",
+    "target_truncated_count": 79,
+    "median_full_target_tokens": 1242.5,
+    "median_scored_tokens": 932.0,
+    "median_full_prompt_tokens": 801.0,
+    "source_empty_references": 43,
+    "train_empty_references": 42,
+    "source_nonempty_inputs": 0
+  },
+  "statistics": "95% paired percentile bootstrap, 10000 resamples, seed20261014. Conditional on this selected checkpoint; ignores document clustering and selection bias.",
+  "limitations": [
+    "Validation used for checkpoint selection, not an untouched test.",
+    "Question-disjoint, not document-disjoint.",
+    "Reference answers are not independently expert verified.",
+    "QA generation is token-capped; lexical overlap is not factual accuracy.",
+    "Hand-authored small probes measure JSON/routing decisions, not actual agent tool execution."
+  ],
+  "prompt_coverage": {
+    "cutoff_len": 1536,
+    "n": 96,
+    "full_question_retained_count": 17,
+    "source_truncated_count": 80,
+    "method": "Decode the actual retained prompt produced by the same LLaMA Factory supervised processor; exact complete question string membership.",
+    "note": "Coverage audit of existing training/evaluation preprocessing, not a new model run; no data or model modified."
+  },
+  "nll_full_prompt": {
+    "n": 95,
+    "base_mean": 1.5096122108007732,
+    "tuned_mean": 1.0740907462019669,
+    "relative_reduction_pct": 28.849890156080825,
+    "mean_paired_reduction": 0.4355214645988063,
+    "paired_reduction_ci95": [
+      0.40974616163655336,
+      0.4674289276882222
+    ],
+    "improved_count": 95,
+    "base_token_weighted_ppl": 4.4860111945789365,
+    "tuned_token_weighted_ppl": 2.950769082583142
+  },
+  "topics_full_prompt": [
+    {
+      "group": "工艺与施工",
+      "n": 29,
+      "base": 1.523722397870031,
+      "tuned": 1.0717601406163182
+    },
+    {
+      "group": "氧化与侵蚀",
+      "n": 29,
+      "base": 1.4928773970439517,
+      "tuned": 1.0681409095895702
+    },
+    {
+      "group": "热震与力学",
+      "n": 22,
+      "base": 1.5155827701091766,
+      "tuned": 1.0686947324059226
+    },
+    {
+      "group": "结构与表征/其他",
+      "n": 15,
+      "base": 1.505929668744405,
+      "tuned": 1.0980137546857198
+    }
+  ]
+}

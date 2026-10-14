@@ -1,0 +1,162 @@
+[
+  {
+    "mode": "base",
+    "kind": "qa",
+    "batch_id": "base-qa-00",
+    "seconds": 25.75172571092844,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "qa",
+    "batch_id": "base-qa-01",
+    "seconds": 25.98997190594673,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "qa",
+    "batch_id": "base-qa-02",
+    "seconds": 26.075946800410748,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "qa",
+    "batch_id": "base-qa-03",
+    "seconds": 25.5452768355608,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "qa",
+    "batch_id": "base-qa-04",
+    "seconds": 25.244127109646797,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "qa",
+    "batch_id": "base-qa-05",
+    "seconds": 25.47070088237524,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "probes",
+    "batch_id": "base-probes-00",
+    "seconds": 1.745740868151188,
+    "new_tokens": 110,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "probes",
+    "batch_id": "base-probes-01",
+    "seconds": 0.6244145557284355,
+    "new_tokens": 44,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "probes",
+    "batch_id": "base-probes-02",
+    "seconds": 1.1151068061590195,
+    "new_tokens": 66,
+    "count": 4
+  },
+  {
+    "mode": "base",
+    "kind": "probes",
+    "batch_id": "base-probes-03",
+    "seconds": 0.8808200508356094,
+    "new_tokens": 60,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "qa",
+    "batch_id": "tuned-qa-00",
+    "seconds": 43.93204974383116,
+    "new_tokens": 1764,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "qa",
+    "batch_id": "tuned-qa-01",
+    "seconds": 43.02245005965233,
+    "new_tokens": 1867,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "qa",
+    "batch_id": "tuned-qa-02",
+    "seconds": 42.61557459831238,
+    "new_tokens": 1803,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "qa",
+    "batch_id": "tuned-qa-03",
+    "seconds": 43.731943659484386,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "qa",
+    "batch_id": "tuned-qa-04",
+    "seconds": 42.662322990596294,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "qa",
+    "batch_id": "tuned-qa-05",
+    "seconds": 42.787191942334175,
+    "new_tokens": 2048,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "probes",
+    "batch_id": "tuned-probes-00",
+    "seconds": 2.9512907341122627,
+    "new_tokens": 110,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "probes",
+    "batch_id": "tuned-probes-01",
+    "seconds": 1.4147714376449585,
+    "new_tokens": 49,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "probes",
+    "batch_id": "tuned-probes-02",
+    "seconds": 1.8237437903881073,
+    "new_tokens": 66,
+    "count": 4
+  },
+  {
+    "mode": "tuned",
+    "kind": "probes",
+    "batch_id": "tuned-probes-03",
+    "seconds": 1.4307653605937958,
+    "new_tokens": 60,
+    "count": 4
+  }
+]

@@ -59,6 +59,11 @@ def _training_function(config: dict[str, Any]) -> None:
     callbacks: list[Any] = config.get("callbacks")
     model_args, data_args, training_args, finetuning_args, generating_args = get_train_args(args)
 
+    if os.getenv("MATERIAL_MONITOR_CASES"):
+        from .material_monitor import MaterialMonitorCallback
+
+        callbacks.append(MaterialMonitorCallback(os.environ["MATERIAL_MONITOR_CASES"]))
+
     callbacks.append(LogCallback())
     if finetuning_args.pissa_convert:
         callbacks.append(PissaConvertCallback())

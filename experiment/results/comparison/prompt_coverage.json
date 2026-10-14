@@ -1,0 +1,682 @@
+{
+  "cutoff_len": 1536,
+  "n": 96,
+  "full_question_retained_count": 17,
+  "source_truncated_count": 80,
+  "method": "Decode the actual retained prompt produced by the same LLaMA Factory supervised processor; exact complete question string membership.",
+  "note": "Coverage audit of existing training/evaluation preprocessing, not a new model run; no data or model modified.",
+  "rows": [
+    {
+      "case_id": "qa-00307",
+      "source_tokens_full": 818,
+      "source_tokens_retained": 722,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-00348",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 582,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-00390",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 541,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-00397",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 803,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-00401",
+      "source_tokens_full": 801,
+      "source_tokens_retained": 593,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-00547",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 569,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-00588",
+      "source_tokens_full": 797,
+      "source_tokens_retained": 751,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-00888",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 692,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-00959",
+      "source_tokens_full": 801,
+      "source_tokens_retained": 704,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-00962",
+      "source_tokens_full": 798,
+      "source_tokens_retained": 671,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-01220",
+      "source_tokens_full": 808,
+      "source_tokens_retained": 802,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-01341",
+      "source_tokens_full": 792,
+      "source_tokens_retained": 677,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02007",
+      "source_tokens_full": 792,
+      "source_tokens_retained": 635,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02122",
+      "source_tokens_full": 796,
+      "source_tokens_retained": 759,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02170",
+      "source_tokens_full": 794,
+      "source_tokens_retained": 794,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-02245",
+      "source_tokens_full": 792,
+      "source_tokens_retained": 467,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02256",
+      "source_tokens_full": 795,
+      "source_tokens_retained": 585,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02382",
+      "source_tokens_full": 801,
+      "source_tokens_retained": 539,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02385",
+      "source_tokens_full": 797,
+      "source_tokens_retained": 518,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02394",
+      "source_tokens_full": 798,
+      "source_tokens_retained": 651,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02405",
+      "source_tokens_full": 798,
+      "source_tokens_retained": 549,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02503",
+      "source_tokens_full": 814,
+      "source_tokens_retained": 814,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-02580",
+      "source_tokens_full": 800,
+      "source_tokens_retained": 628,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02722",
+      "source_tokens_full": 806,
+      "source_tokens_retained": 756,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02797",
+      "source_tokens_full": 798,
+      "source_tokens_retained": 627,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02924",
+      "source_tokens_full": 800,
+      "source_tokens_retained": 626,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-02964",
+      "source_tokens_full": 793,
+      "source_tokens_retained": 697,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03062",
+      "source_tokens_full": 799,
+      "source_tokens_retained": 799,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-03145",
+      "source_tokens_full": 796,
+      "source_tokens_retained": 537,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03169",
+      "source_tokens_full": 796,
+      "source_tokens_retained": 476,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03197",
+      "source_tokens_full": 794,
+      "source_tokens_retained": 500,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03222",
+      "source_tokens_full": 796,
+      "source_tokens_retained": 436,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03252",
+      "source_tokens_full": 811,
+      "source_tokens_retained": 505,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03309",
+      "source_tokens_full": 811,
+      "source_tokens_retained": 547,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03473",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 803,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-03485",
+      "source_tokens_full": 798,
+      "source_tokens_retained": 798,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-03638",
+      "source_tokens_full": 801,
+      "source_tokens_retained": 690,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03687",
+      "source_tokens_full": 800,
+      "source_tokens_retained": 484,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03699",
+      "source_tokens_full": 814,
+      "source_tokens_retained": 661,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03712",
+      "source_tokens_full": 805,
+      "source_tokens_retained": 562,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03738",
+      "source_tokens_full": 797,
+      "source_tokens_retained": 446,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-03815",
+      "source_tokens_full": 794,
+      "source_tokens_retained": 444,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-04095",
+      "source_tokens_full": 802,
+      "source_tokens_retained": 802,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-04126",
+      "source_tokens_full": 806,
+      "source_tokens_retained": 806,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-04240",
+      "source_tokens_full": 805,
+      "source_tokens_retained": 680,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-04562",
+      "source_tokens_full": 806,
+      "source_tokens_retained": 770,
+      "full_question_retained": false,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-04568",
+      "source_tokens_full": 797,
+      "source_tokens_retained": 797,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-04595",
+      "source_tokens_full": 802,
+      "source_tokens_retained": 547,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-04625",
+      "source_tokens_full": 800,
+      "source_tokens_retained": 578,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-04823",
+      "source_tokens_full": 796,
+      "source_tokens_retained": 545,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-04881",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 803,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-04949",
+      "source_tokens_full": 808,
+      "source_tokens_retained": 392,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-04971",
+      "source_tokens_full": 798,
+      "source_tokens_retained": 711,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-04972",
+      "source_tokens_full": 805,
+      "source_tokens_retained": 544,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-05089",
+      "source_tokens_full": 813,
+      "source_tokens_retained": 571,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-05145",
+      "source_tokens_full": 809,
+      "source_tokens_retained": 593,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-05281",
+      "source_tokens_full": 800,
+      "source_tokens_retained": 439,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-05433",
+      "source_tokens_full": 797,
+      "source_tokens_retained": 797,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-05876",
+      "source_tokens_full": 805,
+      "source_tokens_retained": 805,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-05958",
+      "source_tokens_full": 804,
+      "source_tokens_retained": 494,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06171",
+      "source_tokens_full": 801,
+      "source_tokens_retained": 589,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06178",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 615,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06236",
+      "source_tokens_full": 825,
+      "source_tokens_retained": 464,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06279",
+      "source_tokens_full": 804,
+      "source_tokens_retained": 529,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06297",
+      "source_tokens_full": 794,
+      "source_tokens_retained": 689,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06367",
+      "source_tokens_full": 820,
+      "source_tokens_retained": 586,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06482",
+      "source_tokens_full": 799,
+      "source_tokens_retained": 456,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06607",
+      "source_tokens_full": 801,
+      "source_tokens_retained": 443,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06724",
+      "source_tokens_full": 804,
+      "source_tokens_retained": 522,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06846",
+      "source_tokens_full": 798,
+      "source_tokens_retained": 435,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06863",
+      "source_tokens_full": 813,
+      "source_tokens_retained": 565,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-06960",
+      "source_tokens_full": 804,
+      "source_tokens_retained": 615,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07005",
+      "source_tokens_full": 808,
+      "source_tokens_retained": 808,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-07218",
+      "source_tokens_full": 797,
+      "source_tokens_retained": 721,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07248",
+      "source_tokens_full": 794,
+      "source_tokens_retained": 722,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07290",
+      "source_tokens_full": 791,
+      "source_tokens_retained": 700,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07356",
+      "source_tokens_full": 793,
+      "source_tokens_retained": 536,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07579",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 597,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07863",
+      "source_tokens_full": 805,
+      "source_tokens_retained": 452,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07875",
+      "source_tokens_full": 803,
+      "source_tokens_retained": 420,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07879",
+      "source_tokens_full": 799,
+      "source_tokens_retained": 799,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-07887",
+      "source_tokens_full": 794,
+      "source_tokens_retained": 555,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-07923",
+      "source_tokens_full": 800,
+      "source_tokens_retained": 611,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08123",
+      "source_tokens_full": 810,
+      "source_tokens_retained": 493,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08151",
+      "source_tokens_full": 802,
+      "source_tokens_retained": 539,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08166",
+      "source_tokens_full": 796,
+      "source_tokens_retained": 620,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08299",
+      "source_tokens_full": 796,
+      "source_tokens_retained": 682,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08305",
+      "source_tokens_full": 806,
+      "source_tokens_retained": 612,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08324",
+      "source_tokens_full": 811,
+      "source_tokens_retained": 811,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-08497",
+      "source_tokens_full": 805,
+      "source_tokens_retained": 431,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08560",
+      "source_tokens_full": 802,
+      "source_tokens_retained": 625,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08571",
+      "source_tokens_full": 804,
+      "source_tokens_retained": 710,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08744",
+      "source_tokens_full": 824,
+      "source_tokens_retained": 824,
+      "full_question_retained": true,
+      "user_role_header_retained": true
+    },
+    {
+      "case_id": "qa-08819",
+      "source_tokens_full": 804,
+      "source_tokens_retained": 490,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-08923",
+      "source_tokens_full": 802,
+      "source_tokens_retained": 468,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    },
+    {
+      "case_id": "qa-09390",
+      "source_tokens_full": 793,
+      "source_tokens_retained": 505,
+      "full_question_retained": false,
+      "user_role_header_retained": false
+    }
+  ]
+}

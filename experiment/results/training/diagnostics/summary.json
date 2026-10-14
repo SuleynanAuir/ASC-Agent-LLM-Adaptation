@@ -1,0 +1,66 @@
+{
+  "global_step": 800,
+  "epoch": 0.6846384253316218,
+  "best_metric": 1.1850557327270508,
+  "best_model_checkpoint": "/root/autodl-tmp/saves/qwen3-8b/lora/material-diagnostic-3h4h-20261014/checkpoint-600",
+  "eval_history": [
+    {
+      "step": 0,
+      "wall_seconds": 66.08999562263489,
+      "eval_loss": 1.7049535512924194,
+      "eval_runtime": 49.1721,
+      "eval_samples_per_second": 1.952,
+      "eval_steps_per_second": 1.952,
+      "epoch": 0,
+      "num_input_tokens_seen": 0
+    },
+    {
+      "step": 200,
+      "wall_seconds": 2792.63768863678,
+      "eval_loss": 1.2406312227249146,
+      "eval_runtime": 49.4516,
+      "eval_samples_per_second": 1.941,
+      "eval_steps_per_second": 1.941,
+      "epoch": 0.17115960633290545,
+      "num_input_tokens_seen": 2375576
+    },
+    {
+      "step": 400,
+      "wall_seconds": 5741.800264120102,
+      "eval_loss": 1.1936230659484863,
+      "eval_runtime": 49.4452,
+      "eval_samples_per_second": 1.942,
+      "eval_steps_per_second": 1.942,
+      "epoch": 0.3423192126658109,
+      "num_input_tokens_seen": 4762240
+    },
+    {
+      "step": 600,
+      "wall_seconds": 8698.73089146614,
+      "eval_loss": 1.1850557327270508,
+      "eval_runtime": 49.4695,
+      "eval_samples_per_second": 1.941,
+      "eval_steps_per_second": 1.941,
+      "epoch": 0.5134788189987163,
+      "num_input_tokens_seen": 7152424
+    },
+    {
+      "step": 800,
+      "wall_seconds": 11641.145834445953,
+      "eval_loss": 1.185499668121338,
+      "eval_runtime": 49.471,
+      "eval_samples_per_second": 1.941,
+      "eval_steps_per_second": 1.941,
+      "epoch": 0.6846384253316218,
+      "num_input_tokens_seen": 9537936
+    }
+  ],
+  "nonfinite": [
+    {
+      "step": 17,
+      "metric": "grad_norm",
+      "value": "nan"
+    }
+  ],
+  "note": "Assess trends jointly; no universal gradient or loss-drop threshold proves stability or accuracy."
+}

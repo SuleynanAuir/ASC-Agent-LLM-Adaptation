@@ -1,0 +1,9 @@
+{
+  "verified_date": "2026-10-14",
+  "output_root": "/root/autodl-tmp/saves/qwen3-8b/lora/material-diagnostic-3h4h-20261014",
+  "selected_checkpoint": "checkpoint-600",
+  "root_adapter_sha256": "00d82c90b9bf23d3f14f12cb5735b9c7e2e648a9b0409f29123a5f596de809d7",
+  "checkpoint_600_adapter_sha256": "00d82c90b9bf23d3f14f12cb5735b9c7e2e648a9b0409f29123a5f596de809d7",
+  "equal": true,
+  "method": "sha256sum of both adapter_model.safetensors files on the AutoDL host"
+}

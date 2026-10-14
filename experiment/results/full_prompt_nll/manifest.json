@@ -1,0 +1,39 @@
+{
+  "started_at": "2026-10-14T15:15:26+0800",
+  "model": "/root/autodl-tmp/models/Qwen3-8B",
+  "adapter": "/root/autodl-tmp/saves/qwen3-8b/lora/material-diagnostic-3h4h-20261014/checkpoint-600",
+  "adapter_sha256": "00d82c90b9bf23d3f14f12cb5735b9c7e2e648a9b0409f29123a5f596de809d7",
+  "gpu": "Tesla V100S-PCIE-32GB",
+  "capability": [
+    7,
+    0
+  ],
+  "dtype": "float16",
+  "attention": "sdpa",
+  "seed": 20261014,
+  "validation_count": 96,
+  "generation_count": 24,
+  "probe_count": 16,
+  "max_new_tokens": {
+    "qa": 512,
+    "probes": 256
+  },
+  "generation_batch_size": 4,
+  "decoding": "greedy, enable_thinking=false; adapter disabled vs enabled on one base",
+  "nll": "Preserve full LLaMA Factory prompt, truncate response only, cutoff=1536",
+  "preserve_prompt": true,
+  "nll_only": true,
+  "limitations": [
+    "Validation used for checkpoint selection, not an untouched test.",
+    "Question-disjoint, not document-disjoint.",
+    "Reference answers are not independently expert verified.",
+    "QA generation is token-capped; lexical overlap is not factual accuracy.",
+    "Hand-authored small probes measure JSON/routing decisions, not actual agent tool execution."
+  ],
+  "versions": {
+    "torch": "2.4.1",
+    "transformers": "4.56.2",
+    "peft": "0.18.1",
+    "llamafactory": "0.9.5.dev0"
+  }
+}

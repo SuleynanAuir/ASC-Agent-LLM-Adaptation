@@ -1,0 +1,14 @@
+{
+  "cases": [
+    "qa-02722",
+    "qa-03062",
+    "qa-05089",
+    "qa-00397",
+    "qa-02170",
+    "qa-08571"
+  ],
+  "split": "explicit holdout; identical normalized questions excluded from train",
+  "decoding": "greedy, enable_thinking=false, max_new_tokens=384",
+  "baseline": "same Qwen3-8B with LoRA adapter disabled",
+  "warning": "Qualitative samples only; generated answers are not factual accuracy scores."
+}
