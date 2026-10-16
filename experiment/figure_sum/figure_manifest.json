@@ -1,0 +1,59 @@
+{
+  "source_evaluation_date": "2026-10-14",
+  "figure_prepared_date": "2026-10-16",
+  "operation": "Plot existing measured results only; no new inference, training, or external upload.",
+  "source_sha256": {
+    "results/summary.json": "fe87bd069f7891a0e40d321812bb5c17d8ef614a301751018d2ec1c920d3f2bb",
+    "results/scored_generation.json": "be25f13bb71365abb493bc182a3444cc36f261506f3367810b83bf5cb98a484e",
+    "results/full_prompt_nll/nll.json": "f1005455654442415e043d549f16a1db55c8c0dc4b00c84b571ea24310993445",
+    "results/comparison/timing.json": "914f93f507823f1c422aa3fd30b5dab43061fbe4740cfe90b2fc847761d0ee50",
+    "results/comparison/manifest.json": "c36dfc0a6beb94fa362c485a69da33da302bfbb83086e10cf4f5df9277669f88"
+  },
+  "plot_script_sha256": "2cd72695a59bbb8e50df013f0859238aa01dfd0fc73d35c31878263b0834cd28",
+  "versions": {
+    "numpy": "1.26.4",
+    "matplotlib": "3.10.7"
+  },
+  "bootstrap": {
+    "paired": true,
+    "unit": "question",
+    "resamples": 10000,
+    "seed": 20261014,
+    "interval": "percentile 95%"
+  },
+  "proportion_intervals": "Wilson score 95%; descriptive for small hand-authored probe subsets",
+  "limitations": [
+    "Validation used for checkpoint selection, not an untouched test.",
+    "Question-disjoint, not document-disjoint.",
+    "Reference answers are not independently expert verified.",
+    "QA generation is token-capped; lexical overlap is not factual accuracy.",
+    "Hand-authored small probes measure JSON/routing decisions, not actual agent tool execution."
+  ],
+  "nll_protocol": "Full prompt retained; reference response truncated to fit cutoff=1536; n=95 nonempty references.",
+  "formats": [
+    "300-DPI PNG",
+    "SVG with editable text"
+  ],
+  "figures": {
+    "00_overview": {
+      "title_zh": "核心结果总览",
+      "caption_zh": "6个子图汇总NLL、PPL、文本重合、指令/格式通过率及吞吐/批次耗时。不同量纲分别作图，不合成为总分，也不使用雷达图混合尺度。"
+    },
+    "01_reference_likelihood": {
+      "title_zh": "参考答案拟合与领域分组",
+      "caption_zh": "95条非空参考，保留完整prompt；分别展示逐样本等权NLL、token加权PPL、同题散点及4个主题分组。它们衡量参考答案似然，不是生成答案事实正确率。"
+    },
+    "02_answer_overlap": {
+      "title_zh": "材料回答文本重合度",
+      "caption_zh": "23组非空参考问答的字符ROUGE-L与二元组F1，以及主题分组和逐题差值。新增主题二元组分组由已有逐题分数聚合，未重新进行GPU推理。负向变化不隐藏。"
+    },
+    "03_instruction_format": {
+      "title_zh": "指令遵循与JSON格式",
+      "caption_zh": "16组自编题：总体通过率、4类子任务及逐题成对结果。柱上标成功数/总数，误差线为Wilson区间。数字字符串或Markdown围栏可能导致严格评分失败，不能直接解释为计算错误。"
+    },
+    "04_generation_efficiency": {
+      "title_zh": "生成效率与长度限制",
+      "caption_zh": "同一V100S环境下的输出吞吐、6批实际耗时、24题输出长度及512-token触顶率。LoRA未合并；批次耗时不是单请求延迟，未测TTFT或P95请求延迟。"
+    }
+  }
+}

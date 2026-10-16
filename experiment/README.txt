@@ -14,6 +14,9 @@ Qwen3-8B 项目材料领域：微调前后对比实验
    材料问答评分是参考文本重合度，不是事实准确率；指令诊断为严格JSON/期望值匹配。
    8例按每个主题case_id升序取前2条非空参考，不按提升幅度挑选；8例汇总只计这8例。
    本次JSON整理复用已有真实推理结果，没有再次占用GPU或改写模型答案。
+8. figure_sum/index.html：已测指标学术组合图，4张分组图＋1张总览图；提供300 DPI PNG、SVG和中文图注。
+   figure_sum/source_data.json保留绘图数值与区间，figure_manifest.json记录源文件SHA256及统计方法。
+   图中未混入未测benchmark，也未把文本重合度标成事实准确率；原figures/和results/保持不变。
 
 比较对象
 基模：/root/autodl-tmp/models/Qwen3-8B。
@@ -75,6 +78,7 @@ scripts/                        GPU评测、覆盖审计、分析、单元测试
 在项目根目录运行：
   python experiment/scripts/analyze_comparison.py
   python experiment/scripts/export_paired_comparisons.py
+  python experiment/scripts/plot_figure_summary.py
   PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s experiment/scripts -p 'test_*.py' -v
 需要numpy、matplotlib及中文字体。Linux缺少中文字体时可安装Noto CJK；
 本次交付的PNG已渲染，可直接使用，不需要重新安装PyTorch。
